@@ -1,5 +1,5 @@
 listen_addr: ":8080"
 
-mysql_url: "root:123456@tcp(127.0.0.1:3306)/mx_passport"
-redis_url: "127.0.0.1:6379"
+mysql_url: "root:123456@tcp(192.168.100.102:3306)/mx_passport"
+redis_url: "192.168.100.102:6379"
 redis_auth: "123456"

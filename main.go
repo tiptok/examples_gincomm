@@ -12,7 +12,7 @@ import (
 )
 
 func init() {
-	config.NewViperConfig("yaml", ".\\conf\\app-dev.yaml")
+	config.NewViperConfig("yaml", "conf/app-dev.yaml")
 }
 
 func main() {
@@ -21,7 +21,7 @@ func main() {
 		Level:    "7",
 	})
 
-	err := redis.InitWithDb(100, config.Default.String("redis_add_port"), config.Default.String("redis_auth"), "0")
+	err := redis.InitWithDb(100, config.Default.String("redis_url"), config.Default.String("redis_auth"), "0")
 	if err != nil {
 		log.Fatal(err)
 	}

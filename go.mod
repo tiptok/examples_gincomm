@@ -9,4 +9,4 @@ require (
 	github.com/tiptok/gocomm v0.0.0-20190902031746-1511efde9b13
 )
 
-replace github.com/tiptok/gocomm => F:/gocomm
+replace github.com/tiptok/gocomm => ../gocomm

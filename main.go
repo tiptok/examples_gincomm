@@ -11,28 +11,27 @@ import (
 	"github.com/tiptok/examples_gincomm/routers"
 )
 
-func init(){
-	config.NewViperConfig("yaml",".\\conf\\app-dev.yaml")
+func init() {
+	config.NewViperConfig("yaml", ".\\conf\\app-dev.yaml")
 }
 
-func main(){
+func main() {
 	log.InitGinLog(config.Logger{
-		Filename:"app.log",
-		Level:"7",
+		Filename: "app.log",
+		Level:    "7",
 	})
 
-	err:= redis.InitWithDb(100,config.Default.String("redis_add_port"),config.Default.String("redis_auth"),"0")
-	if err!=nil{
+	err := redis.InitWithDb(100, config.Default.String("redis_add_port"), config.Default.String("redis_auth"), "0")
+	if err != nil {
 		log.Fatal(err)
 	}
 	orm.NewBeeormEngine(config.Mysql{
-		DataSource:config.Default.String("mysql_url"),
-		MaxIdle: 100,
-		MaxOpen:100,
+		DataSource: config.Default.String("mysql_url"),
+		MaxIdle:    100,
+		MaxOpen:    100,
 	})
-	defer func(){
+	defer func() {
 		log.Info("app on stop!")
 	}()
 	routers.InitRouter(config.Default.String("listen_addr"))
 }
-

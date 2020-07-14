@@ -31,10 +31,10 @@ jobs:
     - name: Copying files to server
       uses: appleboy/scp-action@master
       with:
-        source: './*'
         host: ${{ secrets.REMOTE_HOST }}
         username: ${{ secrets.REMOTE_USER }}
         key: ${{ secrets.SSH_KEY }}
+        # passphrase: ${{ secrets.SSH_KEY_PASSPHRASE }}
         rm: true
-        passphrase: ${{ secrets.SSH_KEY_PASSPHRASE }}
+        source: './*'
         target: "${{ secrets.REMOTE_DIR }}" 
